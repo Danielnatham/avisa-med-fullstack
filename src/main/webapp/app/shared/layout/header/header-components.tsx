@@ -13,7 +13,7 @@ export const BrandIcon = props => (
 export const Brand = () => (
   <NavbarBrand tag={Link} to="/" className="brand-logo">
     <BrandIcon />
-    <span className="brand-title">AvisaMed</span>
+    <span className="brand-title">AvisaMed Admin</span>
   </NavbarBrand>
 );
 

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Button, Table } from 'reactstrap';
+import { Badge, Button, Table } from 'reactstrap';
 import { TextFormat, getPaginationState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
@@ -9,7 +9,7 @@ import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.cons
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { getEntities } from './ocorrencia.reducer';
+import { getEntities, updateEntity } from './ocorrencia.reducer';
 
 export const Ocorrencia = () => {
   const dispatch = useAppDispatch();
@@ -24,6 +24,31 @@ export const Ocorrencia = () => {
   const ocorrenciaList = useAppSelector(state => state.ocorrencia.entities);
   const loading = useAppSelector(state => state.ocorrencia.loading);
   const totalItems = useAppSelector(state => state.ocorrencia.totalItems);
+
+  const resolverOcorrencia = ocorrencia => {
+    if (window.confirm('Deseja realmente resolver essa ocorrência?')) {
+      dispatch(
+        updateEntity({
+          ...ocorrencia,
+          situacao: 'RESOLVIDO',
+          dataResolucao: new Date(),
+        }),
+      );
+    }
+  };
+
+  const getBadgeColor = situacao => {
+    switch (situacao) {
+      case 'ABERTO':
+        return 'danger';
+      case 'ATRIBUIDO':
+        return 'warning';
+      case 'RESOLVIDO':
+        return 'success';
+      default:
+        return 'primary';
+    }
+  };
 
   const getAllEntities = () => {
     dispatch(
@@ -152,9 +177,14 @@ export const Ocorrencia = () => {
                   <td>
                     {ocorrencia.dataResolucao ? <TextFormat type="date" value={ocorrencia.dataResolucao} format={APP_DATE_FORMAT} /> : '-'}
                   </td>
-                  <td>{ocorrencia.situacao}</td>
-                  <td>{ocorrencia.complexidade}</td>
+                  <td>
+                    <Badge style={{ width: '6rem' }} color={getBadgeColor(ocorrencia.situacao)}>
+                      {ocorrencia.situacao}
+                    </Badge>
+                  </td>
+                  <td>{ocorrencia.complexidade ?? 'ALTA'}</td>
                   <td>{ocorrencia.protocolo}</td>
+                  <td>{ocorrencia.departamento?.nome ?? 'Não atribuído!'}</td>
                   <td className="d-flex text-end justify-content-center align-content-center">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/ocorrencia/${ocorrencia.id}`} color="info" size="sm" data-cy="entityDetailsButton">
@@ -168,6 +198,15 @@ export const Ocorrencia = () => {
                         data-cy="entityEditButton"
                       >
                         <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Atribuir</span>
+                      </Button>
+                      <Button
+                        color="primary"
+                        size="sm"
+                        data-cy="entityEditButton"
+                        disabled={ocorrencia.situacao === 'RESOLVIDO' || ocorrencia.situacao === 'ABERTO'}
+                        onClick={() => resolverOcorrencia(ocorrencia)}
+                      >
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Resolver</span>
                       </Button>
                       <Button
                         onClick={() =>

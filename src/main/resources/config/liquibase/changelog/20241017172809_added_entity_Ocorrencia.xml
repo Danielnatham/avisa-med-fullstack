@@ -67,6 +67,7 @@
             <column name="situacao" type="string"/>
             <column name="complexidade" type="string"/>
             <column name="protocolo" type="string"/>
+            <column name="departamento_id" type="numeric"/>
         </loadData>
     </changeSet>
 

@@ -54,6 +54,9 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
     @Override
     public OcorrenciaDTO update(OcorrenciaDTO ocorrenciaDTO) {
         Ocorrencia ocorrencia = ocorrenciaMapper.toEntity(ocorrenciaDTO);
+        if (ocorrenciaDTO.getSituacao() == null) {
+            ocorrencia.setSituacao("ATRIBUIDO");
+        }
         ocorrencia = ocorrenciaRepository.save(ocorrencia);
         return ocorrenciaMapper.toDto(ocorrencia);
     }

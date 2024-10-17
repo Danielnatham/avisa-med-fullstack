@@ -1,11 +1,11 @@
 id;id_gestor_departamento;nome;descricao
-1;9342;Carlos Silva;Gestão de Projetos de TI
-2;14758;Ana Souza;Coordenação de Marketing Digital
-3;22300;Roberto Lima;Desenvolvimento de Sistemas Web
-4;29668;Fernanda Costa;Análise de Dados e BI
-5;5404;Juliana Pereira;Suporte Técnico e Infraestrutura
-6;780;Lucas Almeida;Recursos Humanos
-7;4218;Patrícia Ramos;Planejamento Estratégico
-8;13554;Marcelo Oliveira;Pesquisa e Desenvolvimento
-9;19138;Cláudia Nunes;Finanças e Contabilidade
-10;30115;João Mendes;Operações e Logística
+1;1;Emergência;Departamento responsável por atendimentos de emergência e casos críticos.
+2;1;Oncologia;Setor especializado no tratamento de pacientes com câncer.
+3;1;Radiologia;Departamento que realiza exames de imagem, como raios-X e ressonância magnética.
+4;1;Pediatria;Setor destinado ao cuidado de crianças e adolescentes.
+5;1;Cardiologia;Especializado no diagnóstico e tratamento de doenças cardíacas.
+6;1;Ortopedia;Departamento responsável pelo tratamento de lesões e doenças ortopédicas.
+7;1;Ginecologia;Setor especializado em saúde feminina e cuidados pré-natais.
+8;1;Neurologia;Departamento responsável pelo diagnóstico e tratamento de doenças neurológicas.
+9;1;Psiquiatria;Setor dedicado à saúde mental e ao tratamento de distúrbios psicológicos.
+10;1;Fisioterapia;Departamento que auxilia na reabilitação de pacientes por meio de terapia física.

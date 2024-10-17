@@ -1,11 +1,11 @@
-id;data_criacao;data_resolucao;titulo;descricao;imagem;situacao;complexidade;protocolo
-1;2024-10-17T09:14:54;;Buraco na rampa;Tem um buraco na rampa da oncologia;../fake-data/blob/buraco-rampa.jpg;ABERTO;ALTA;OC/12345
-2;2024-10-15T11:35:22;2024-10-16T09:50:12;Vazamento de água;Há um vazamento de água na sala de radiologia;../fake-data/blob/vazamento-agua.jpg;RESOLVIDO;MEDIA;OC/12346
-3;2024-10-14T08:20:30;;Interruptor quebrado;O interruptor da sala de descanso está quebrado;../fake-data/blob/interruptor-quebrado.jpg;ABERTO;BAIXA;OC/12347
-4;2024-10-16T14:15:00;2024-10-17T09:30:00;Computador travado;Computador na recepção travando constantemente;../fake-data/blob/alerta.jpg;RESOLVIDO;MEDIA;OC/12348
-5;2024-10-13T10:45:54;2024-10-14T16:20:22;Porta com defeito;A porta do banheiro não está fechando direito;../fake-data/blob/alerta.jpg;RESOLVIDO;ALTA;OC/12349
-6;2024-10-17T07:30:12;;Fiação exposta;Fiação exposta na sala de espera;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12350
-7;2024-10-12T09:22:43;2024-10-13T11:45:18;Ar-condicionado não funciona;O ar-condicionado da sala de triagem parou de funcionar;../fake-data/blob/alerta.jpg;RESOLVIDO;MEDIA;OC/12351
-8;2024-10-11T15:40:05;;Elevador fora de serviço;O elevador do prédio principal está fora de serviço;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12352
-9;2024-10-10T13:30:48;2024-10-11T10:55:36;Cadeira quebrada;Cadeira da recepção com um pé quebrado;../fake-data/blob/alerta.jpg;RESOLVIDO;BAIXA;OC/12353
-10;2024-10-17T08:10:34;;Piso escorregadio;Piso escorregadio na entrada do prédio;../fake-data/blob/alerta.jpg;ABERTO;ALTA;OC/12354
+id;data_criacao;data_resolucao;titulo;descricao;imagem;situacao;complexidade;protocolo;departamento_id
+1;2024-10-17T09:14:54;;Buraco na rampa;Tem um buraco na rampa da oncologia;../fake-data/blob/buraco-rampa.jpg;ABERTO;ALTA;OC/12345;
+2;2024-10-15T11:35:22;2024-10-16T09:50:12;Vazamento de água;Há um vazamento de água na sala de radiologia;../fake-data/blob/vazamento-agua.jpg;ATRIBUIDO;MEDIA;OC/12346;3
+3;2024-10-14T08:20:30;;Interruptor quebrado;O interruptor da sala de descanso está quebrado;../fake-data/blob/interruptor-quebrado.jpg;ABERTO;BAIXA;OC/12347;
+4;2024-10-16T14:15:00;2024-10-17T09:30:00;Computador travado;Computador na recepção travando constantemente;../fake-data/blob/alerta.jpg;ATRIBUIDO;MEDIA;OC/12348;4
+5;2024-10-13T10:45:54;2024-10-14T16:20:22;Porta com defeito;A porta do banheiro não está fechando direito;../fake-data/blob/alerta.jpg;RESOLVIDO;ALTA;OC/12349;5
+6;2024-10-17T07:30:12;;Fiação exposta;Fiação exposta na sala de espera;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12350;
+7;2024-10-12T09:22:43;2024-10-13T11:45:18;Ar-condicionado não funciona;O ar-condicionado da sala de triagem parou de funcionar;../fake-data/blob/alerta.jpg;RESOLVIDO;MEDIA;OC/12351;1
+8;2024-10-11T15:40:05;;Elevador fora de serviço;O elevador do prédio principal está fora de serviço;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12352;
+9;2024-10-10T13:30:48;2024-10-11T10:55:36;Cadeira quebrada;Cadeira da recepção com um pé quebrado;../fake-data/blob/alerta.jpg;RESOLVIDO;BAIXA;OC/12353;4
+10;2024-10-17T08:10:34;;Piso escorregadio;Piso escorregadio na entrada do prédio;../fake-data/blob/alerta.jpg;ABERTO;ALTA;OC/12354;

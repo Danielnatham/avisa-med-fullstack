@@ -19,35 +19,27 @@ public class Ocorrencia implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @NotNull
     @Column(name = "data_criacao", nullable = false)
     private Instant dataCriacao;
 
-    @NotNull
     @Column(name = "data_resolucao", nullable = false)
     private Instant dataResolucao;
 
-    @NotNull
     @Column(name = "titulo", length = 50, nullable = false)
     private String titulo;
 
-    @NotNull
     @Column(name = "descricao", length = 200, nullable = false)
     private String descricao;
 
-    @NotNull
     @Column(name = "imagem", length = 100, nullable = false)
     private byte[] imagem;
 
-    @NotNull
     @Column(name = "situacao", length = 10, nullable = false)
     private String situacao;
 
-    @NotNull
     @Column(name = "complexidade", nullable = false)
     private String complexidade;
 
-    @NotNull
     @Size(max = 12)
     @Column(name = "protocolo", length = 12, nullable = false)
     private String protocolo;
@@ -56,7 +48,7 @@ public class Ocorrencia implements Serializable {
     @JsonIgnoreProperties(value = { "usuario", "ocorrencias" }, allowSetters = true)
     private CidadaoIdentificado cidadaoIdentificado;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JsonIgnoreProperties(value = { "gestorDepartamento", "ocorrencias", "colaboradors" }, allowSetters = true)
     private Departamento departamento;
 

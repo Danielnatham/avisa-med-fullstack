@@ -104,6 +104,7 @@ export const OcorrenciaUpdate = () => {
           cidadaoIdentificado: ocorrenciaEntity?.cidadaoIdentificado?.id,
           departamento: ocorrenciaEntity?.departamento?.id,
           equipe: ocorrenciaEntity?.equipe?.id,
+          situacao: 'ATRIBUIDO',
         };
 
   return (
@@ -133,9 +134,6 @@ export const OcorrenciaUpdate = () => {
                 placeholder="YYYY-MM-DD HH:mm"
                 defaultValue={displayDefaultDateTime()}
                 hidden
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                }}
               />
               <ValidatedField
                 label="Data Resolucao"
@@ -146,44 +144,10 @@ export const OcorrenciaUpdate = () => {
                 type="datetime-local"
                 placeholder="YYYY-MM-DD HH:mm"
                 hidden
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                }}
               />
-              <ValidatedField
-                label="Titulo"
-                id="ocorrencia-titulo"
-                name="titulo"
-                data-cy="titulo"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  maxLength: { value: 50, message: 'Este campo não pode ter mais de 50 caracteres.' },
-                }}
-              />
-              <ValidatedField
-                label="Descricao"
-                id="ocorrencia-descricao"
-                name="descricao"
-                data-cy="descricao"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  maxLength: { value: 200, message: 'Este campo não pode ter mais de 200 caracteres.' },
-                }}
-              />
-              <ValidatedField
-                label="Situacao"
-                id="ocorrencia-situacao"
-                name="situacao"
-                data-cy="situacao"
-                type="text"
-                hidden={isNew}
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  maxLength: { value: 10, message: 'Este campo não pode ter mais de 10 caracteres.' },
-                }}
-              />
+              <ValidatedField label="Titulo" id="ocorrencia-titulo" name="titulo" data-cy="titulo" type="text" />
+              <ValidatedField label="Descricao" id="ocorrencia-descricao" name="descricao" data-cy="descricao" type="text" />
+              <ValidatedField label="Situacao" id="ocorrencia-situacao" name="situacao" data-cy="situacao" type="text" hidden={isNew} />
               {isNew && (
                 <ValidatedField label="Complexidade" id="ocorrencia-complexidade" name="complexidade" data-cy="complexidade" type="select">
                   {complexidades

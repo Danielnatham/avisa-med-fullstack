@@ -11,7 +11,7 @@ export const Home = () => {
         <span className="hipster rounded" />
       </Col>
       <Col md="9" className="align-content-center text-center">
-        <h1 className="display-4">Bem vindo, ao Avisa Med!</h1>
+        <h1 className="display-4">Bem vindo, ao Avisa Med Admin!</h1>
         <p className="lead">
           Seu sistema para <mark>gestão simplificada de ocorrências!</mark>
         </p>

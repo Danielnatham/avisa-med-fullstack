@@ -26,7 +26,7 @@ public interface OcorrenciaMapper extends EntityMapper<OcorrenciaDTO, Ocorrencia
     CidadaoIdentificadoDTO toDtoCidadaoIdentificadoId(CidadaoIdentificado cidadaoIdentificado);
 
     @Named("departamentoId")
-    @BeanMapping(ignoreByDefault = true)
+    @BeanMapping(ignoreByDefault = false)
     @Mapping(target = "id", source = "id")
     DepartamentoDTO toDtoDepartamentoId(Departamento departamento);
 
