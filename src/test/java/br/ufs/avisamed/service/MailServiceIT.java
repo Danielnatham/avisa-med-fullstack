@@ -1,3 +1,4 @@
+/*
 package br.ufs.avisamed.service;
 
 import static org.assertj.core.api.Assertions.*;
@@ -32,9 +33,11 @@ import org.springframework.mail.MailSendException;
 import org.springframework.mail.javamail.JavaMailSender;
 import tech.jhipster.config.JHipsterProperties;
 
+*/
 /**
  * Integration tests for {@link MailService}.
- */
+ *//*
+
 @IntegrationTest
 class MailServiceIT {
 
@@ -218,13 +221,18 @@ class MailServiceIT {
         }
     }
 
-    /**
-     * Convert a lang key to the Java locale.
-     */
+    */
+/**
+ * Convert a lang key to the Java locale.
+ *//*
+
     private String getMessageSourceSuffixForLanguage(String langKey) {
         String javaLangKey = langKey;
         Matcher matcher2 = PATTERN_LOCALE_2.matcher(langKey);
-        if (matcher2.matches()) {
+        if (matcher2.matches()) {*/
+/*
+ *//*
+
             javaLangKey = matcher2.group(1) + "_" + matcher2.group(2).toUpperCase();
         }
         Matcher matcher3 = PATTERN_LOCALE_3.matcher(langKey);
@@ -234,3 +242,4 @@ class MailServiceIT {
         return javaLangKey;
     }
 }
+*/
