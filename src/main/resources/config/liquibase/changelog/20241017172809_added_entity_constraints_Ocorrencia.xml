@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <!--
+        Added the constraints for entity Ocorrencia.
+    -->
+    <changeSet id="20241017172809-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="cidadao_identificado_id"
+                                 baseTableName="ocorrencia"
+                                 constraintName="fk_ocorrencia__cidadao_identificado_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cidadao_identificado"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="departamento_id"
+                                 baseTableName="ocorrencia"
+                                 constraintName="fk_ocorrencia__departamento_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="departamento"
+                                 />
+
+        <addForeignKeyConstraint baseColumnNames="equipe_id"
+                                 baseTableName="ocorrencia"
+                                 constraintName="fk_ocorrencia__equipe_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="equipe"
+                                 />
+    </changeSet>
+</databaseChangeLog>

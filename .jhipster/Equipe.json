@@ -1,0 +1,56 @@
+{
+  "annotations": {
+    "changelogDate": "20241017172807"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idOcorrencia",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idG",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataAtribuicao",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "dataFinalizacao",
+      "fieldType": "Instant",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Equipe",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "ocorrencia",
+      "otherEntityRelationshipName": "equipe",
+      "relationshipName": "ocorrencia",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "equipeColaborador",
+      "otherEntityRelationshipName": "equipe",
+      "relationshipName": "equipeColaborador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "gestorDepartamento",
+      "otherEntityRelationshipName": "equipe",
+      "relationshipName": "gestorDepartamento",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

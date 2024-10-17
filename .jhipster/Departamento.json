@@ -1,0 +1,53 @@
+{
+  "annotations": {
+    "changelogDate": "20241017172806"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idGestorDepartamento",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "nome",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "30"
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "maxlength"],
+      "fieldValidateRulesMaxlength": "200"
+    }
+  ],
+  "name": "Departamento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "gestorDepartamento",
+      "otherEntityRelationshipName": "departamento",
+      "relationshipName": "gestorDepartamento",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "ocorrencia",
+      "otherEntityRelationshipName": "departamento",
+      "relationshipName": "ocorrencia",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "colaborador",
+      "otherEntityRelationshipName": "departamento",
+      "relationshipName": "colaborador",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

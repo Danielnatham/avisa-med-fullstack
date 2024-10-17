@@ -1,0 +1,60 @@
+{
+  "annotations": {
+    "changelogDate": "20241017172802"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idDepartamento",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idUsuario",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "Colaborador",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "usuario",
+      "otherEntityRelationshipName": "colaborador",
+      "relationshipName": "usuario",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "gestorDepartamento",
+      "otherEntityRelationshipName": "colaborador",
+      "relationshipName": "gestorDepartamento",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "gestorHu",
+      "otherEntityRelationshipName": "colaborador",
+      "relationshipName": "gestorHu",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "equipeColaborador",
+      "otherEntityRelationshipName": "colaborador",
+      "relationshipName": "equipeColaborador",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "departamento",
+      "otherEntityRelationshipName": "colaborador",
+      "relationshipName": "departamento",
+      "relationshipSide": "right",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

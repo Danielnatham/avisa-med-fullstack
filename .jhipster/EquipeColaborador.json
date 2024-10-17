@@ -1,0 +1,39 @@
+{
+  "annotations": {
+    "changelogDate": "20241017172808"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "idColaborador",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "idEquipe",
+      "fieldType": "Integer",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "EquipeColaborador",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "equipe",
+      "otherEntityRelationshipName": "equipeColaborador",
+      "relationshipName": "equipe",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "colaborador",
+      "otherEntityRelationshipName": "equipeColaborador",
+      "relationshipName": "colaborador",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}

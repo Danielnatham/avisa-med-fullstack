@@ -1,0 +1,90 @@
+enum TipoSolicitacao {
+    CADASTRO, DEMONSTRACAO
+}
+
+enum Status {
+    ONLINE, OFFLINE, ERRO
+}
+
+// Entities
+entity Usuario {
+	nome String required maxlength(50)
+	telefone String required maxlength(50)
+    dataNascimento LocalDate required
+    email String required maxlength(320)
+    cpf String required maxlength(14)
+    senha String required maxlength(50)
+}
+
+entity Colaborador {
+    idDepartamento Integer required
+    idUsuario Integer required
+}
+
+entity CidadaoIdentificado {
+	idUsuario Integer required
+}
+
+entity GestorHu {
+    idColaborador Integer required
+}
+
+entity GestorDepartamento {
+    titulo String required
+    descricao String required
+}
+
+entity Departamento {
+	idGestorDepartamento Integer required
+	nome String required maxlength(30)
+    descricao String required maxlength(200)
+}
+
+entity Equipe {
+	idOcorrencia Integer required
+    idG Integer required
+    dataAtribuicao Instant required
+    dataFinalizacao Instant required
+}
+
+entity EquipeColaborador {
+	idColaborador Integer required
+    idEquipe Integer required
+}
+
+entity Ocorrencia {
+	idSolicitante Integer
+    idDepartamento Integer required
+    dataCriacao Instant required
+    dataResolucao Instant required
+    titulo String required maxlength(50)
+    descricao String required maxlength(200)
+    imagem String required maxlength(100)
+    situacao String required maxlength(10)
+    complexidade Integer required min(1) max(10)
+    protocolo String required maxlength(12)
+}
+
+
+relationship OneToOne {
+	Colaborador to Usuario
+    CidadaoIdentificado to Usuario
+    GestorDepartamento to Colaborador
+    GestorHu to Colaborador
+    Departamento to GestorDepartamento
+    EquipeColaborador to Equipe
+    EquipeColaborador to Colaborador
+}
+
+relationship OneToMany {
+    CidadaoIdentificado to Ocorrencia
+    Departamento to Ocorrencia
+    Departamento to Colaborador
+    GestorDepartamento to Equipe
+    Equipe to Ocorrencia
+}
+
+// DTO, pagination, and service options
+paginate * with pagination
+service * with serviceImpl
+dto * with mapstruct

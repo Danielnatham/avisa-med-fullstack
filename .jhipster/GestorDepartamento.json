@@ -1,0 +1,46 @@
+{
+  "annotations": {
+    "changelogDate": "20241017172805"
+  },
+  "applications": "*",
+  "dto": "mapstruct",
+  "fields": [
+    {
+      "fieldName": "titulo",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "descricao",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    }
+  ],
+  "name": "GestorDepartamento",
+  "pagination": "pagination",
+  "relationships": [
+    {
+      "otherEntityName": "colaborador",
+      "otherEntityRelationshipName": "gestorDepartamento",
+      "relationshipName": "colaborador",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-one"
+    },
+    {
+      "otherEntityName": "equipe",
+      "otherEntityRelationshipName": "gestorDepartamento",
+      "relationshipName": "equipe",
+      "relationshipSide": "left",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityName": "departamento",
+      "otherEntityRelationshipName": "gestorDepartamento",
+      "relationshipName": "departamento",
+      "relationshipSide": "right",
+      "relationshipType": "one-to-one"
+    }
+  ],
+  "searchEngine": "no",
+  "service": "serviceImpl"
+}
