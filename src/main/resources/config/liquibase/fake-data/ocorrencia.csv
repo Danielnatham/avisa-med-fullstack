@@ -1,11 +1,11 @@
-id;id_solicitante;id_departamento;data_criacao;data_resolucao;titulo;descricao;imagem;situacao;complexidade;protocolo
-1;19528;31580;2024-10-17T09:14:54;2024-10-17T14:19:43;warmth ironclad patiently;biodegradable burgle mmm;ample instantly;blah drat ;5;via gosh tru
-2;17515;2661;2024-10-17T03:53:06;2024-10-17T10:11:30;but;exhilarate bassoon;rumour provided given;although;1;nor hm
-3;22505;13029;2024-10-17T16:32:22;2024-10-16T20:02:42;now incomparable bah;stealthily traditionalism cheery;oh;unless att;10;truly thorou
-4;25097;20237;2024-10-16T18:41:27;2024-10-17T11:38:40;loving incidentally;lonely idle;nor gain;aw kindhea;5;kookily
-5;19909;22322;2024-10-17T08:23:45;2024-10-17T15:24:11;via;greedily peninsula fence;as and;for mode;6;after everyt
-6;14868;9384;2024-10-16T23:06:07;2024-10-16T19:12:13;revolt;meh quaintly;procure nutritious madly;plantation;5;yum
-7;26750;8537;2024-10-16T17:51:58;2024-10-16T23:59:24;earnings whenever;provided or;onto yippee;plastic in;8;oh
-8;26692;23056;2024-10-17T14:44:45;2024-10-17T05:09:48;undock hops;consequently;lightly tightly round;duh situat;1;scarily trul
-9;21905;31736;2024-10-17T06:10:47;2024-10-16T21:37:37;grease cot;for patent turnover;uh-huh clearly;dehumanize;9;till
-10;974;30406;2024-10-17T14:39:50;2024-10-17T02:08:42;let;amid sick as;over youthful;spear;8;strong the p
+id;data_criacao;data_resolucao;titulo;descricao;imagem;situacao;complexidade;protocolo
+1;2024-10-17T09:14:54;;Buraco na rampa;Tem um buraco na rampa da oncologia;../fake-data/blob/buraco-rampa.jpg;ABERTO;ALTA;OC/12345
+2;2024-10-15T11:35:22;2024-10-16T09:50:12;Vazamento de água;Há um vazamento de água na sala de radiologia;../fake-data/blob/vazamento-agua.jpg;RESOLVIDO;MEDIA;OC/12346
+3;2024-10-14T08:20:30;;Interruptor quebrado;O interruptor da sala de descanso está quebrado;../fake-data/blob/interruptor-quebrado.jpg;ABERTO;BAIXA;OC/12347
+4;2024-10-16T14:15:00;2024-10-17T09:30:00;Computador travado;Computador na recepção travando constantemente;../fake-data/blob/alerta.jpg;RESOLVIDO;MEDIA;OC/12348
+5;2024-10-13T10:45:54;2024-10-14T16:20:22;Porta com defeito;A porta do banheiro não está fechando direito;../fake-data/blob/alerta.jpg;RESOLVIDO;ALTA;OC/12349
+6;2024-10-17T07:30:12;;Fiação exposta;Fiação exposta na sala de espera;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12350
+7;2024-10-12T09:22:43;2024-10-13T11:45:18;Ar-condicionado não funciona;O ar-condicionado da sala de triagem parou de funcionar;../fake-data/blob/alerta.jpg;RESOLVIDO;MEDIA;OC/12351
+8;2024-10-11T15:40:05;;Elevador fora de serviço;O elevador do prédio principal está fora de serviço;../fake-data/blob/alerta.jpg;ABERTO;CRITICA;OC/12352
+9;2024-10-10T13:30:48;2024-10-11T10:55:36;Cadeira quebrada;Cadeira da recepção com um pé quebrado;../fake-data/blob/alerta.jpg;RESOLVIDO;BAIXA;OC/12353
+10;2024-10-17T08:10:34;;Piso escorregadio;Piso escorregadio na entrada do prédio;../fake-data/blob/alerta.jpg;ABERTO;ALTA;OC/12354

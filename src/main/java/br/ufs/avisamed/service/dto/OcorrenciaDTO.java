@@ -13,39 +13,22 @@ public class OcorrenciaDTO implements Serializable {
 
     private Long id;
 
-    private Integer idSolicitante;
-
-    @NotNull
-    private Integer idDepartamento;
-
-    @NotNull
     private Instant dataCriacao;
 
-    @NotNull
     private Instant dataResolucao;
 
-    @NotNull
     @Size(max = 50)
     private String titulo;
 
-    @NotNull
     @Size(max = 200)
     private String descricao;
 
-    @NotNull
-    @Size(max = 100)
-    private String imagem;
+    private byte[] imagem;
 
-    @NotNull
-    @Size(max = 10)
     private String situacao;
 
-    @NotNull
-    @Min(value = 1)
-    @Max(value = 10)
-    private Integer complexidade;
+    private String complexidade;
 
-    @NotNull
     @Size(max = 12)
     private String protocolo;
 
@@ -61,22 +44,6 @@ public class OcorrenciaDTO implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getIdSolicitante() {
-        return idSolicitante;
-    }
-
-    public void setIdSolicitante(Integer idSolicitante) {
-        this.idSolicitante = idSolicitante;
-    }
-
-    public Integer getIdDepartamento() {
-        return idDepartamento;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 
     public Instant getDataCriacao() {
@@ -111,11 +78,11 @@ public class OcorrenciaDTO implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return imagem;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
 
@@ -127,11 +94,11 @@ public class OcorrenciaDTO implements Serializable {
         this.situacao = situacao;
     }
 
-    public Integer getComplexidade() {
+    public String getComplexidade() {
         return complexidade;
     }
 
-    public void setComplexidade(Integer complexidade) {
+    public void setComplexidade(String complexidade) {
         this.complexidade = complexidade;
     }
 
@@ -193,8 +160,6 @@ public class OcorrenciaDTO implements Serializable {
     public String toString() {
         return "OcorrenciaDTO{" +
             "id=" + getId() +
-            ", idSolicitante=" + getIdSolicitante() +
-            ", idDepartamento=" + getIdDepartamento() +
             ", dataCriacao='" + getDataCriacao() + "'" +
             ", dataResolucao='" + getDataResolucao() + "'" +
             ", titulo='" + getTitulo() + "'" +

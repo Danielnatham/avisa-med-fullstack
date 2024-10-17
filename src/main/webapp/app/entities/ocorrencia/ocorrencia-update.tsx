@@ -5,17 +5,15 @@ import { isNumber, ValidatedField, ValidatedForm } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 import { convertDateTimeFromServer, convertDateTimeToServer, displayDefaultDateTime } from 'app/shared/util/date-utils';
-import { mapIdList } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
 
-import { ICidadaoIdentificado } from 'app/shared/model/cidadao-identificado.model';
 import { getEntities as getCidadaoIdentificados } from 'app/entities/cidadao-identificado/cidadao-identificado.reducer';
-import { IDepartamento } from 'app/shared/model/departamento.model';
 import { getEntities as getDepartamentos } from 'app/entities/departamento/departamento.reducer';
-import { IEquipe } from 'app/shared/model/equipe.model';
 import { getEntities as getEquipes } from 'app/entities/equipe/equipe.reducer';
-import { IOcorrencia } from 'app/shared/model/ocorrencia.model';
 import { getEntity, updateEntity, createEntity, reset } from './ocorrencia.reducer';
+import { ICidadaoIdentificado } from 'app/shared/model/cidadao-identificado.model';
+import { IDepartamento } from 'app/shared/model/departamento.model';
+import { IEquipe } from 'app/shared/model/equipe.model';
 
 export const OcorrenciaUpdate = () => {
   const dispatch = useAppDispatch();
@@ -25,9 +23,9 @@ export const OcorrenciaUpdate = () => {
   const { id } = useParams<'id'>();
   const isNew = id === undefined;
 
-  const cidadaoIdentificados = useAppSelector(state => state.cidadaoIdentificado.entities);
-  const departamentos = useAppSelector(state => state.departamento.entities);
-  const equipes = useAppSelector(state => state.equipe.entities);
+  const cidadaoIdentificados: ICidadaoIdentificado[] = useAppSelector(state => state.cidadaoIdentificado.entities);
+  const departamentos: IDepartamento[] = useAppSelector(state => state.departamento.entities);
+  const equipes: IEquipe[] = useAppSelector(state => state.equipe.entities);
   const ocorrenciaEntity = useAppSelector(state => state.ocorrencia.entity);
   const loading = useAppSelector(state => state.ocorrencia.loading);
   const updating = useAppSelector(state => state.ocorrencia.updating);
@@ -36,6 +34,12 @@ export const OcorrenciaUpdate = () => {
   const handleClose = () => {
     navigate('/ocorrencia' + location.search);
   };
+
+  const complexidades = [
+    { value: '1', label: 'Baixa' },
+    { value: '5', label: 'Média' },
+    { value: '10', label: 'Alta' },
+  ];
 
   useEffect(() => {
     if (isNew) {
@@ -121,30 +125,14 @@ export const OcorrenciaUpdate = () => {
                 <ValidatedField name="id" required readOnly id="ocorrencia-id" label="Código" validate={{ required: true }} />
               ) : null}
               <ValidatedField
-                label="Id Solicitante"
-                id="ocorrencia-idSolicitante"
-                name="idSolicitante"
-                data-cy="idSolicitante"
-                type="text"
-              />
-              <ValidatedField
-                label="Id Departamento"
-                id="ocorrencia-idDepartamento"
-                name="idDepartamento"
-                data-cy="idDepartamento"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  validate: v => isNumber(v) || 'Este campo é do tipo numérico.',
-                }}
-              />
-              <ValidatedField
                 label="Data Criacao"
                 id="ocorrencia-dataCriacao"
                 name="dataCriacao"
                 data-cy="dataCriacao"
                 type="datetime-local"
                 placeholder="YYYY-MM-DD HH:mm"
+                defaultValue={displayDefaultDateTime()}
+                hidden
                 validate={{
                   required: { value: true, message: 'O campo é obrigatório.' },
                 }}
@@ -154,8 +142,10 @@ export const OcorrenciaUpdate = () => {
                 id="ocorrencia-dataResolucao"
                 name="dataResolucao"
                 data-cy="dataResolucao"
+                defaultValue={displayDefaultDateTime()}
                 type="datetime-local"
                 placeholder="YYYY-MM-DD HH:mm"
+                hidden
                 validate={{
                   required: { value: true, message: 'O campo é obrigatório.' },
                 }}
@@ -183,87 +173,40 @@ export const OcorrenciaUpdate = () => {
                 }}
               />
               <ValidatedField
-                label="Imagem"
-                id="ocorrencia-imagem"
-                name="imagem"
-                data-cy="imagem"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  maxLength: { value: 100, message: 'Este campo não pode ter mais de 100 caracteres.' },
-                }}
-              />
-              <ValidatedField
                 label="Situacao"
                 id="ocorrencia-situacao"
                 name="situacao"
                 data-cy="situacao"
                 type="text"
+                hidden={isNew}
                 validate={{
                   required: { value: true, message: 'O campo é obrigatório.' },
                   maxLength: { value: 10, message: 'Este campo não pode ter mais de 10 caracteres.' },
                 }}
               />
-              <ValidatedField
-                label="Complexidade"
-                id="ocorrencia-complexidade"
-                name="complexidade"
-                data-cy="complexidade"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  min: { value: 1, message: 'Este campo deve ser maior que 1.' },
-                  max: { value: 10, message: 'Este campo não pode ser maior que 10.' },
-                  validate: v => isNumber(v) || 'Este campo é do tipo numérico.',
-                }}
-              />
-              <ValidatedField
-                label="Protocolo"
-                id="ocorrencia-protocolo"
-                name="protocolo"
-                data-cy="protocolo"
-                type="text"
-                validate={{
-                  required: { value: true, message: 'O campo é obrigatório.' },
-                  maxLength: { value: 12, message: 'Este campo não pode ter mais de 12 caracteres.' },
-                }}
-              />
-              <ValidatedField
-                id="ocorrencia-cidadaoIdentificado"
-                name="cidadaoIdentificado"
-                data-cy="cidadaoIdentificado"
-                label="Cidadao Identificado"
-                type="select"
-              >
-                <option value="" key="0" />
-                {cidadaoIdentificados
-                  ? cidadaoIdentificados.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField id="ocorrencia-departamento" name="departamento" data-cy="departamento" label="Departamento" type="select">
-                <option value="" key="0" />
-                {departamentos
-                  ? departamentos.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
-              <ValidatedField id="ocorrencia-equipe" name="equipe" data-cy="equipe" label="Equipe" type="select">
-                <option value="" key="0" />
-                {equipes
-                  ? equipes.map(otherEntity => (
-                      <option value={otherEntity.id} key={otherEntity.id}>
-                        {otherEntity.id}
-                      </option>
-                    ))
-                  : null}
-              </ValidatedField>
+              {isNew && (
+                <ValidatedField label="Complexidade" id="ocorrencia-complexidade" name="complexidade" data-cy="complexidade" type="select">
+                  {complexidades
+                    ? complexidades.map(otherEntity => (
+                        <option value={otherEntity.value} key={otherEntity.value}>
+                          {otherEntity.label}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+              )}
+              {!isNew && (
+                <ValidatedField id="ocorrencia-departamento" name="departamento" data-cy="departamento" label="Departamento" type="select">
+                  <option value="" key="0" />
+                  {departamentos
+                    ? departamentos.map(otherEntity => (
+                        <option value={otherEntity.id} key={otherEntity.id}>
+                          {otherEntity.nome}
+                        </option>
+                      ))
+                    : null}
+                </ValidatedField>
+              )}
               <Button tag={Link} id="cancel-save" data-cy="entityCreateCancelButton" to="/ocorrencia" replace color="info">
                 <FontAwesomeIcon icon="arrow-left" />
                 &nbsp;
