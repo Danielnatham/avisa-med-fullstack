@@ -9,14 +9,6 @@
         Added the constraints for entity Ocorrencia.
     -->
     <changeSet id="20241017172809-2" author="jhipster">
-
-        <addForeignKeyConstraint baseColumnNames="cidadao_identificado_id"
-                                 baseTableName="ocorrencia"
-                                 constraintName="fk_ocorrencia__cidadao_identificado_id"
-                                 referencedColumnNames="id"
-                                 referencedTableName="cidadao_identificado"
-                                 />
-
         <addForeignKeyConstraint baseColumnNames="departamento_id"
                                  baseTableName="ocorrencia"
                                  constraintName="fk_ocorrencia__departamento_id"

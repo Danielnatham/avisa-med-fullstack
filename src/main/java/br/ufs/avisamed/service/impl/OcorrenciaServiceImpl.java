@@ -5,9 +5,12 @@ import br.ufs.avisamed.repository.OcorrenciaRepository;
 import br.ufs.avisamed.service.OcorrenciaService;
 import br.ufs.avisamed.service.dto.OcorrenciaDTO;
 import br.ufs.avisamed.service.mapper.OcorrenciaMapper;
+import java.io.IOException;
 import java.util.Optional;
+import java.util.Random;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -33,15 +36,23 @@ public class OcorrenciaServiceImpl implements OcorrenciaService {
 
     @Override
     public OcorrenciaDTO save(OcorrenciaDTO ocorrenciaDTO) {
-        log.debug("Request to save Ocorrencia : {}", ocorrenciaDTO);
+        byte[] img = new byte[0];
+        try {
+            img = (new ClassPathResource("config/liquibase/fake-data/blob/alerta.jpg")).getContentAsByteArray();
+        } catch (IOException e) {
+            log.error(e.toString());
+        }
+
         Ocorrencia ocorrencia = ocorrenciaMapper.toEntity(ocorrenciaDTO);
+        ocorrencia.setSituacao("ABERTO");
+        ocorrencia.setProtocolo("OC/" + new Random().nextInt(1000000));
+        ocorrencia.setImagem(img);
         ocorrencia = ocorrenciaRepository.save(ocorrencia);
         return ocorrenciaMapper.toDto(ocorrencia);
     }
 
     @Override
     public OcorrenciaDTO update(OcorrenciaDTO ocorrenciaDTO) {
-        log.debug("Request to update Ocorrencia : {}", ocorrenciaDTO);
         Ocorrencia ocorrencia = ocorrenciaMapper.toEntity(ocorrenciaDTO);
         ocorrencia = ocorrenciaRepository.save(ocorrencia);
         return ocorrenciaMapper.toDto(ocorrencia);

@@ -6,9 +6,6 @@ import jakarta.validation.constraints.*;
 import java.io.Serializable;
 import java.time.Instant;
 
-/**
- * A Ocorrencia.
- */
 @Entity
 @Table(name = "ocorrencia")
 @SuppressWarnings("common-java:DuplicatedBlocks")
@@ -22,13 +19,6 @@ public class Ocorrencia implements Serializable {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "id_solicitante")
-    private Integer idSolicitante;
-
-    @NotNull
-    @Column(name = "id_departamento", nullable = false)
-    private Integer idDepartamento;
-
     @NotNull
     @Column(name = "data_criacao", nullable = false)
     private Instant dataCriacao;
@@ -38,30 +28,24 @@ public class Ocorrencia implements Serializable {
     private Instant dataResolucao;
 
     @NotNull
-    @Size(max = 50)
     @Column(name = "titulo", length = 50, nullable = false)
     private String titulo;
 
     @NotNull
-    @Size(max = 200)
     @Column(name = "descricao", length = 200, nullable = false)
     private String descricao;
 
     @NotNull
-    @Size(max = 100)
     @Column(name = "imagem", length = 100, nullable = false)
-    private String imagem;
+    private byte[] imagem;
 
     @NotNull
-    @Size(max = 10)
     @Column(name = "situacao", length = 10, nullable = false)
     private String situacao;
 
     @NotNull
-    @Min(value = 1)
-    @Max(value = 10)
     @Column(name = "complexidade", nullable = false)
-    private Integer complexidade;
+    private String complexidade;
 
     @NotNull
     @Size(max = 12)
@@ -93,32 +77,6 @@ public class Ocorrencia implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Integer getIdSolicitante() {
-        return this.idSolicitante;
-    }
-
-    public Ocorrencia idSolicitante(Integer idSolicitante) {
-        this.setIdSolicitante(idSolicitante);
-        return this;
-    }
-
-    public void setIdSolicitante(Integer idSolicitante) {
-        this.idSolicitante = idSolicitante;
-    }
-
-    public Integer getIdDepartamento() {
-        return this.idDepartamento;
-    }
-
-    public Ocorrencia idDepartamento(Integer idDepartamento) {
-        this.setIdDepartamento(idDepartamento);
-        return this;
-    }
-
-    public void setIdDepartamento(Integer idDepartamento) {
-        this.idDepartamento = idDepartamento;
     }
 
     public Instant getDataCriacao() {
@@ -173,16 +131,16 @@ public class Ocorrencia implements Serializable {
         this.descricao = descricao;
     }
 
-    public String getImagem() {
+    public byte[] getImagem() {
         return this.imagem;
     }
 
-    public Ocorrencia imagem(String imagem) {
+    public Ocorrencia imagem(byte[] imagem) {
         this.setImagem(imagem);
         return this;
     }
 
-    public void setImagem(String imagem) {
+    public void setImagem(byte[] imagem) {
         this.imagem = imagem;
     }
 
@@ -199,16 +157,16 @@ public class Ocorrencia implements Serializable {
         this.situacao = situacao;
     }
 
-    public Integer getComplexidade() {
+    public String getComplexidade() {
         return this.complexidade;
     }
 
-    public Ocorrencia complexidade(Integer complexidade) {
+    public Ocorrencia complexidade(String complexidade) {
         this.setComplexidade(complexidade);
         return this;
     }
 
-    public void setComplexidade(Integer complexidade) {
+    public void setComplexidade(String complexidade) {
         this.complexidade = complexidade;
     }
 
@@ -279,7 +237,6 @@ public class Ocorrencia implements Serializable {
 
     @Override
     public int hashCode() {
-        // see https://vladmihalcea.com/how-to-implement-equals-and-hashcode-using-the-jpa-entity-identifier/
         return getClass().hashCode();
     }
 
@@ -287,17 +244,15 @@ public class Ocorrencia implements Serializable {
     @Override
     public String toString() {
         return "Ocorrencia{" +
-            "id=" + getId() +
-            ", idSolicitante=" + getIdSolicitante() +
-            ", idDepartamento=" + getIdDepartamento() +
-            ", dataCriacao='" + getDataCriacao() + "'" +
-            ", dataResolucao='" + getDataResolucao() + "'" +
-            ", titulo='" + getTitulo() + "'" +
-            ", descricao='" + getDescricao() + "'" +
-            ", imagem='" + getImagem() + "'" +
-            ", situacao='" + getSituacao() + "'" +
-            ", complexidade=" + getComplexidade() +
-            ", protocolo='" + getProtocolo() + "'" +
-            "}";
+               "id=" + getId() +
+               ", dataCriacao='" + getDataCriacao() + "'" +
+               ", dataResolucao='" + getDataResolucao() + "'" +
+               ", titulo='" + getTitulo() + "'" +
+               ", descricao='" + getDescricao() + "'" +
+               ", imagem='" + getImagem() + "'" +
+               ", situacao='" + getSituacao() + "'" +
+               ", complexidade=" + getComplexidade() +
+               ", protocolo='" + getProtocolo() + "'" +
+               "}";
     }
 }

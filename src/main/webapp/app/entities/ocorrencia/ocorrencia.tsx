@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Button, Table } from 'reactstrap';
-import { Translate, TextFormat, getPaginationState, JhiPagination, JhiItemCount } from 'react-jhipster';
+import { TextFormat, getPaginationState, JhiPagination, JhiItemCount } from 'react-jhipster';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
-import { APP_DATE_FORMAT, APP_LOCAL_DATE_FORMAT } from 'app/config/constants';
+import { APP_DATE_FORMAT } from 'app/config/constants';
 import { ASC, DESC, ITEMS_PER_PAGE, SORT } from 'app/shared/util/pagination.constants';
 import { overridePaginationStateWithQueryParams } from 'app/shared/util/entity-utils';
 import { useAppDispatch, useAppSelector } from 'app/config/store';
@@ -106,23 +106,11 @@ export const Ocorrencia = () => {
       </h2>
       <div className="table-responsive">
         {ocorrenciaList && ocorrenciaList.length > 0 ? (
-          <Table responsive>
+          <Table responsive striped hover bordered className="text-center">
             <thead>
               <tr>
                 <th className="hand" onClick={sort('id')}>
                   ID <FontAwesomeIcon icon={getSortIconByFieldName('id')} />
-                </th>
-                <th className="hand" onClick={sort('idSolicitante')}>
-                  Id Solicitante <FontAwesomeIcon icon={getSortIconByFieldName('idSolicitante')} />
-                </th>
-                <th className="hand" onClick={sort('idDepartamento')}>
-                  Id Departamento <FontAwesomeIcon icon={getSortIconByFieldName('idDepartamento')} />
-                </th>
-                <th className="hand" onClick={sort('dataCriacao')}>
-                  Data Criacao <FontAwesomeIcon icon={getSortIconByFieldName('dataCriacao')} />
-                </th>
-                <th className="hand" onClick={sort('dataResolucao')}>
-                  Data Resolucao <FontAwesomeIcon icon={getSortIconByFieldName('dataResolucao')} />
                 </th>
                 <th className="hand" onClick={sort('titulo')}>
                   Titulo <FontAwesomeIcon icon={getSortIconByFieldName('titulo')} />
@@ -130,8 +118,11 @@ export const Ocorrencia = () => {
                 <th className="hand" onClick={sort('descricao')}>
                   Descricao <FontAwesomeIcon icon={getSortIconByFieldName('descricao')} />
                 </th>
-                <th className="hand" onClick={sort('imagem')}>
-                  Imagem <FontAwesomeIcon icon={getSortIconByFieldName('imagem')} />
+                <th className="hand" onClick={sort('dataCriacao')}>
+                  Data Criacao <FontAwesomeIcon icon={getSortIconByFieldName('dataCriacao')} />
+                </th>
+                <th className="hand" onClick={sort('dataResolucao')}>
+                  Data Resolucao <FontAwesomeIcon icon={getSortIconByFieldName('dataResolucao')} />
                 </th>
                 <th className="hand" onClick={sort('situacao')}>
                   Situacao <FontAwesomeIcon icon={getSortIconByFieldName('situacao')} />
@@ -141,15 +132,6 @@ export const Ocorrencia = () => {
                 </th>
                 <th className="hand" onClick={sort('protocolo')}>
                   Protocolo <FontAwesomeIcon icon={getSortIconByFieldName('protocolo')} />
-                </th>
-                <th>
-                  Cidadao Identificado <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
-                  Departamento <FontAwesomeIcon icon="sort" />
-                </th>
-                <th>
-                  Equipe <FontAwesomeIcon icon="sort" />
                 </th>
                 <th />
               </tr>
@@ -162,36 +144,18 @@ export const Ocorrencia = () => {
                       {ocorrencia.id}
                     </Button>
                   </td>
-                  <td>{ocorrencia.idSolicitante}</td>
-                  <td>{ocorrencia.idDepartamento}</td>
+                  <td>{ocorrencia.titulo}</td>
+                  <td>{ocorrencia.descricao}</td>
                   <td>
                     {ocorrencia.dataCriacao ? <TextFormat type="date" value={ocorrencia.dataCriacao} format={APP_DATE_FORMAT} /> : null}
                   </td>
                   <td>
-                    {ocorrencia.dataResolucao ? <TextFormat type="date" value={ocorrencia.dataResolucao} format={APP_DATE_FORMAT} /> : null}
+                    {ocorrencia.dataResolucao ? <TextFormat type="date" value={ocorrencia.dataResolucao} format={APP_DATE_FORMAT} /> : '-'}
                   </td>
-                  <td>{ocorrencia.titulo}</td>
-                  <td>{ocorrencia.descricao}</td>
-                  <td>{ocorrencia.imagem}</td>
                   <td>{ocorrencia.situacao}</td>
                   <td>{ocorrencia.complexidade}</td>
                   <td>{ocorrencia.protocolo}</td>
-                  <td>
-                    {ocorrencia.cidadaoIdentificado ? (
-                      <Link to={`/cidadao-identificado/${ocorrencia.cidadaoIdentificado.id}`}>{ocorrencia.cidadaoIdentificado.id}</Link>
-                    ) : (
-                      ''
-                    )}
-                  </td>
-                  <td>
-                    {ocorrencia.departamento ? (
-                      <Link to={`/departamento/${ocorrencia.departamento.id}`}>{ocorrencia.departamento.id}</Link>
-                    ) : (
-                      ''
-                    )}
-                  </td>
-                  <td>{ocorrencia.equipe ? <Link to={`/equipe/${ocorrencia.equipe.id}`}>{ocorrencia.equipe.id}</Link> : ''}</td>
-                  <td className="text-end">
+                  <td className="d-flex text-end justify-content-center align-content-center">
                     <div className="btn-group flex-btn-group-container">
                       <Button tag={Link} to={`/ocorrencia/${ocorrencia.id}`} color="info" size="sm" data-cy="entityDetailsButton">
                         <FontAwesomeIcon icon="eye" /> <span className="d-none d-md-inline">Visualizar</span>
@@ -203,7 +167,7 @@ export const Ocorrencia = () => {
                         size="sm"
                         data-cy="entityEditButton"
                       >
-                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
+                        <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Atribuir</span>
                       </Button>
                       <Button
                         onClick={() =>

@@ -20,67 +20,65 @@ export const OcorrenciaDetail = () => {
 
   const ocorrenciaEntity = useAppSelector(state => state.ocorrencia.entity);
   return (
-    <Row>
-      <Col md="8">
-        <h2 data-cy="ocorrenciaDetailsHeading">Ocorrencia</h2>
-        <dl className="jh-entity-details">
-          <dt>
-            <span id="id">Código</span>
-          </dt>
-          <dd>{ocorrenciaEntity.id}</dd>
-          <dt>
-            <span id="idSolicitante">Id Solicitante</span>
-          </dt>
-          <dd>{ocorrenciaEntity.idSolicitante}</dd>
-          <dt>
-            <span id="idDepartamento">Id Departamento</span>
-          </dt>
-          <dd>{ocorrenciaEntity.idDepartamento}</dd>
-          <dt>
-            <span id="dataCriacao">Data Criacao</span>
-          </dt>
-          <dd>
-            {ocorrenciaEntity.dataCriacao ? <TextFormat value={ocorrenciaEntity.dataCriacao} type="date" format={APP_DATE_FORMAT} /> : null}
-          </dd>
-          <dt>
-            <span id="dataResolucao">Data Resolucao</span>
-          </dt>
-          <dd>
-            {ocorrenciaEntity.dataResolucao ? (
-              <TextFormat value={ocorrenciaEntity.dataResolucao} type="date" format={APP_DATE_FORMAT} />
-            ) : null}
-          </dd>
-          <dt>
-            <span id="titulo">Titulo</span>
-          </dt>
-          <dd>{ocorrenciaEntity.titulo}</dd>
-          <dt>
-            <span id="descricao">Descricao</span>
-          </dt>
-          <dd>{ocorrenciaEntity.descricao}</dd>
-          <dt>
-            <span id="imagem">Imagem</span>
-          </dt>
-          <dd>{ocorrenciaEntity.imagem}</dd>
-          <dt>
-            <span id="situacao">Situacao</span>
-          </dt>
-          <dd>{ocorrenciaEntity.situacao}</dd>
-          <dt>
-            <span id="complexidade">Complexidade</span>
-          </dt>
-          <dd>{ocorrenciaEntity.complexidade}</dd>
-          <dt>
-            <span id="protocolo">Protocolo</span>
-          </dt>
-          <dd>{ocorrenciaEntity.protocolo}</dd>
-          <dt>Cidadao Identificado</dt>
-          <dd>{ocorrenciaEntity.cidadaoIdentificado ? ocorrenciaEntity.cidadaoIdentificado.id : ''}</dd>
-          <dt>Departamento</dt>
-          <dd>{ocorrenciaEntity.departamento ? ocorrenciaEntity.departamento.id : ''}</dd>
-          <dt>Equipe</dt>
-          <dd>{ocorrenciaEntity.equipe ? ocorrenciaEntity.equipe.id : ''}</dd>
-        </dl>
+    <>
+      <Row>
+        <Col md="4">
+          <h2 data-cy="ocorrenciaDetailsHeading">Ocorrencia</h2>
+          <dl className="jh-entity-details">
+            <dt>
+              <span id="id">Código</span>
+            </dt>
+            <dd>{ocorrenciaEntity.id}</dd>
+            <dt>
+              <span id="titulo">Titulo</span>
+            </dt>
+            <dd>{ocorrenciaEntity.titulo}</dd>
+            <dt>
+              <span id="descricao">Descricao</span>
+            </dt>
+            <dd>{ocorrenciaEntity.descricao}</dd>
+            <dt>
+              <span id="dataCriacao">Data Criacao</span>
+            </dt>
+            <dd>
+              {ocorrenciaEntity.dataCriacao ? (
+                <TextFormat value={ocorrenciaEntity.dataCriacao} type="date" format={APP_DATE_FORMAT} />
+              ) : null}
+            </dd>
+            <dt>
+              <span id="dataResolucao">Data Resolucao</span>
+            </dt>
+            <dd>
+              {ocorrenciaEntity.dataResolucao ? (
+                <TextFormat value={ocorrenciaEntity.dataResolucao} type="date" format={APP_DATE_FORMAT} />
+              ) : null}
+            </dd>
+            <dt>
+              <span id="situacao">Situacao</span>
+            </dt>
+            <dd>{ocorrenciaEntity.situacao}</dd>
+            <dt>
+              <span id="complexidade">Complexidade</span>
+            </dt>
+            <dd>{ocorrenciaEntity.complexidade}</dd>
+            <dt>
+              <span id="protocolo">Protocolo</span>
+            </dt>
+            <dd>{ocorrenciaEntity.protocolo}</dd>
+          </dl>
+        </Col>
+        <Col>
+          <dl>
+            <dt>
+              <span id="imagem">Imagem</span>
+            </dt>
+            <dd>
+              <img src={`data:jpg;base64,${ocorrenciaEntity.imagem}`} />
+            </dd>
+          </dl>
+        </Col>
+      </Row>
+      <Col>
         <Button tag={Link} to="/ocorrencia" replace color="info" data-cy="entityDetailsBackButton">
           <FontAwesomeIcon icon="arrow-left" /> <span className="d-none d-md-inline">Voltar</span>
         </Button>
@@ -89,7 +87,7 @@ export const OcorrenciaDetail = () => {
           <FontAwesomeIcon icon="pencil-alt" /> <span className="d-none d-md-inline">Editar</span>
         </Button>
       </Col>
-    </Row>
+    </>
   );
 };
 
